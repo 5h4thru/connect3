@@ -7,11 +7,21 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    // 0: Yellow and 1: Red
+    int activePlayer = 0;
+
     public void dropIn(View view) {
         ImageView counter = (ImageView) view; // need not search for the id because it is what the user tapped on
         counter.setTranslationY(-1000f); // initially move it off the screen without any animation
-        counter.setImageResource(R.drawable.yellow); // set the image
-        counter.animate().translationYBy(1000f).setDuration(300); // animate it back to the screen
+        if(activePlayer == 0) {
+            counter.setImageResource(R.drawable.yellow); // set the image of 'yellow' player
+            activePlayer = 1;
+        }
+        else if(activePlayer == 1) {
+            counter.setImageResource(R.drawable.red); // set the image of 'red' player
+            activePlayer = 0;
+        }
+        counter.animate().translationYBy(1000f).rotation(360f).setDuration(300); // animate it back to the screen
 
     }
 
