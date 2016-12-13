@@ -9,7 +9,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void dropIn(View view) {
         ImageView counter = (ImageView) view; // need not search for the id because it is what the user tapped on
-        counter.setTranslationY(-1000f); // initially move it off the screen
+        counter.setTranslationY(-1000f); // initially move it off the screen without any animation
+        counter.setImageResource(R.drawable.yellow); // set the image
+        counter.animate().translationYBy(1000f).setDuration(300); // animate it back to the screen
+
     }
 
     @Override
